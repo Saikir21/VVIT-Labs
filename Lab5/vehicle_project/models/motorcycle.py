@@ -6,8 +6,9 @@ class Motorcycle(Vehicle):
         super().__init__(brand, model, year)
         self.has_sidecar = has_sidecar
 
-    def move(self) -> str:
-        return "Мотоцикл маневрирует в потоке"
+    def move(self, distance: float) -> str:
+        base_calc = super().move(distance)
+        return f"Мотоцикл едет по трассе -> {base_calc}"
 
     def get_info(self) -> str:
         base_info = super().get_info()

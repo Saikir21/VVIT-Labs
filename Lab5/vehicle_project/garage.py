@@ -14,6 +14,9 @@ class Garage:
             self.vehicles.remove(vehicle)
 
     def show_all(self) -> None:
+        if not self.vehicles:
+            print("Гараж пуст.")
+            return
         for vehicle in self.vehicles:
             print(vehicle.get_info())
 

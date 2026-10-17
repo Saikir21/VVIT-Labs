@@ -6,9 +6,13 @@ class Truck(Vehicle):
         super().__init__(brand, model, year)
         self.max_load = max_load
 
-    def move(self) -> str:
-        return "Грузовик перевозит груз"
-
+    def move(self, distance: float) -> str:
+        base_calc = super().move(distance)
+        return (
+            f"Грузовик перевозит {self.max_load} т груза ->"
+            f" {base_calc}"
+            )
+    
     def get_info(self) -> str:
         base_info = super().get_info()
         return f"{base_info}, грузоподъемность: {self.max_load} т"

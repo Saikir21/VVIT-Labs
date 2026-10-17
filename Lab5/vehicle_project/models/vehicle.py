@@ -1,4 +1,5 @@
-class Vehicle:
+from abc import ABC, abstractmethod
+class Vehicle(ABC):
 
   def __init__(self, brand: str, model: str, year: int):
     self.brand = brand
@@ -15,6 +16,14 @@ class Vehicle:
     if value < 0:
       raise ValueError("Скорость не может быть отрицательной")
     self._speed = value
+
+  @abstractmethod
+  def move(self, distance: float) -> str:
+    if self.speed <= 0:
+      return f"расстояние {distance} км невозможно преодолеть: скорость 0 км/ч"
+
+    time = distance / self.speed
+    return f"дистанция {distance} км пройдена за {time} ч (скорость {self.speed} км/ч)"
 
   def accelerate(self, value: float) -> None:
     if value > 0:
